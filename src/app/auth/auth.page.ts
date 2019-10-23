@@ -30,7 +30,7 @@ export class AuthPage implements OnInit {
         setTimeout(() => {
           this.isLoading = false;
           loadingEl.dismiss();
-          this.router.navigateByUrl('/places/tabs/discover');
+          this.router.navigateByUrl('');
         }, 1500);
       });
     this.authService.login();
