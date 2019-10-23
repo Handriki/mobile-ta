@@ -1,5 +1,6 @@
-import { Routes } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 import { HomePage } from './home.page';
+import { NgModule } from '@angular/core';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
                         loadChildren: './events/events.module#EventsPageModule'
                     }
                 ]
+            },
+            {
+                path: '',
+                redirectTo: '/home/tabs/browse',
+                pathMatch: 'full'
             }
         ]
     },
@@ -33,3 +39,10 @@ const routes: Routes = [
         pathMatch: 'full'
     }
 ];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+
+export class HomeRoutingModule{}
