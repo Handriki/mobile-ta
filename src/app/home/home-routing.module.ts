@@ -9,6 +9,24 @@ const routes: Routes = [
         component: HomePage,
         children: [
             {
+                path: 'following',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './following/following.module#FollowingPageModule'
+                    }
+                ]
+            },
+            {
+                path: 'projects',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './projects/projects.module#ProjectsPageModule'
+                    }
+                ]
+            },
+            {
                 path: 'browse',
                 children: [
                     {
@@ -18,26 +36,28 @@ const routes: Routes = [
                 ]
             },
             {
-                path: "events",
+                path: 'profile',
                 children: [
                     {
                         path: '',
-                        loadChildren: './events/events.module#EventsPageModule'
+                        loadChildren: './profile/profile.module#ProfilePageModule'
                     }
                 ]
             },
             {
                 path: '',
-                redirectTo: '/home/tabs/browse',
+                redirectTo: '/home/tabs/following',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: '/home/tabs/browse',
+        redirectTo: '/home/tabs/following',
         pathMatch: 'full'
-    }
+    },
+  { path: 'following', loadChildren: './following/following.module#FollowingPageModule' }
+
 ];
 
 @NgModule({
