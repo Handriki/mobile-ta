@@ -23,6 +23,10 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: './projects/projects.module#ProjectsPageModule'
+                    },
+                    {
+                        path: 'id',
+                        loadChildren: './projects/project-details/project-details.module#ProjectDetailsPageModule'
                     }
                 ]
             },
@@ -56,7 +60,9 @@ const routes: Routes = [
         redirectTo: '/home/tabs/following',
         pathMatch: 'full'
     },
-  { path: 'following', loadChildren: './following/following.module#FollowingPageModule' }
+  { path: 'following', loadChildren: './following/following.module#FollowingPageModule' },
+  { path: 'project-details', loadChildren: './projects/project-details/project-details.module#ProjectDetailsPageModule' }
+
 
 ];
 
