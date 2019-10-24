@@ -79,4 +79,24 @@
       </app-expandable>
     </ion-card-content>
   </ion-card>
+  <ion-card (click)="expandItem(item)" *ngFor="let item of items">
+      <ion-card-header>
+        <ion-card-title>
+          My Thread
+          <ion-icon name="arrow-dropdown" item-right></ion-icon>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <app-expandable expandHeight="350px" [expanded]="item.expanded">
+          <ion-list>
+            <ion-item>
+              Project Pemerintah
+            </ion-item>
+            <ion-item>
+              Mencari project freelance
+            </ion-item>
+          </ion-list>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
