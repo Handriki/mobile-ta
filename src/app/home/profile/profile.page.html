@@ -6,6 +6,72 @@
     <ion-title>Collab Yuk!</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-Profile
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <img src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389-360x226.jpg" width="80" height="80" style="object-fit: cover; border-radius: 50%;"/>
+      </ion-col>
+      <ion-col size="9">
+        <ion-text>
+          <h1>Handriki Kasa</h1>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-text>
+        <p>Prodi : Informatika</p>
+        <p>Semester : 7</p>
+        <p>Skills :</p>
+      </ion-text>
+    </ion-row>
+  </ion-grid>
+  <ion-card (click)="expandItem(item)" *ngFor="let item of items">
+    <ion-card-header>
+      <ion-card-title>
+        Portofolio
+        <ion-icon name="arrow-dropdown" item-right></ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <app-expandable expandHeight="350px" [expanded]="item.expanded">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+            <ion-col size="4">
+                <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" width="100px" height="100px"/>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
