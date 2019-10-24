@@ -10,6 +10,7 @@ export class ProfilePage implements OnInit {
 
   constructor() {
     this.items = [
+      { expanded: false },
       { expanded: false }
     ];
   }
