@@ -36,6 +36,10 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: './browse/browse.module#BrowsePageModule'
+                    },
+                    {
+                        path: 'id',
+                        loadChildren: './browse/browse-details/browse-details.module#BrowseDetailsPageModule'
                     }
                 ]
             },
@@ -61,7 +65,9 @@ const routes: Routes = [
         pathMatch: 'full'
     },
   { path: 'following', loadChildren: './following/following.module#FollowingPageModule' },
-  { path: 'project-details', loadChildren: './projects/project-details/project-details.module#ProjectDetailsPageModule' }
+  { path: 'project-details', loadChildren: './projects/project-details/project-details.module#ProjectDetailsPageModule' },
+  { path: 'browse-details', loadChildren: './browse/browse-details/browse-details.module#BrowseDetailsPageModule' }
+
 
 
 ];

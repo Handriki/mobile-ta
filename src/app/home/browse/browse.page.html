@@ -5,7 +5,19 @@
     </ion-buttons>
     <ion-title>Collab Yuk!</ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar color="light"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-
+  <ion-card [routerLink]="['/','home','tabs','browse', 'id']">
+    <ion-card-header>
+      <ion-card-title>
+        Mencari Project Front End
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Sedang mencari project yang membutuhkan front end
+    </ion-card-content>
+  </ion-card>
 </ion-content>

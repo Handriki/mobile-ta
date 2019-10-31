@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.page.html',
+  styleUrls: ['./user-profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class UserProfilePage implements OnInit {
   public items: any = [];
 
   constructor() {
