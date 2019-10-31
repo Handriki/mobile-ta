@@ -6,6 +6,26 @@
     <ion-title>Message</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
 
+<ion-content>
+  <ion-card [routerLink]="['/','message','open-message']">
+    <ion-card-header>
+      <ion-card-title>
+        Andre Budiman
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      You have a new message!
+    </ion-card-content>
+  </ion-card>
+  <ion-card [routerLink]="['/','message','open-message']">
+    <ion-card-header>
+      <ion-card-title>
+        Aldric Leonardo
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      You have a new message!
+    </ion-card-content>
+  </ion-card>
 </ion-content>

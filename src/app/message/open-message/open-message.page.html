@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/message"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <div class="chat-box">
+      <div class="message-area">
+        <div class="message">
+          <p>Hello</p>
+        </div>
+      </div>
+      <div class="input-area">
+        <form>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="10" style="border: 1px solid black">
+                <ion-input type="text" name="message" id="message" placeholder="Say something nice..."></ion-input>
+              </ion-col>
+              <ion-col size="2">
+                <ion-button style="margin-top:4px">
+                  <ion-icon name="send"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
