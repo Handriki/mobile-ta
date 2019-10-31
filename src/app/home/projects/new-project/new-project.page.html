@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/tabs/projects"></ion-back-button>
+    </ion-buttons>
+    <ion-button color="light" fill="clear"  slot="end">Post</ion-button>
+    <ion-title>New Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked">Project Details</ion-label>
+    <ion-textarea [attr.rows]="27"></ion-textarea>
+  </ion-item>
+</ion-list>
+</ion-content>
