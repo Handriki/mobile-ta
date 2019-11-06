@@ -1,6 +1,14 @@
 import { Routes, RouterModule } from "@angular/router";
 import { HomePage } from './home.page';
 import { NgModule } from '@angular/core';
+import { FollowingPageModule } from './following/following.module';
+import { ProjectsPageModule } from './projects/projects.module';
+import { ProjectDetailsPageModule } from './projects/project-details/project-details.module';
+import { BrowsePageModule } from './browse/browse.module';
+import { BrowseDetailsPageModule } from './browse/browse-details/browse-details.module';
+import { ProfilePageModule } from './profile/profile.module';
+import { NewBrowsePageModule } from './browse/new-browse/new-browse.module';
+import { NewProjectPageModule } from './projects/new-project/new-project.module';
 
 
 const routes: Routes = [
@@ -13,7 +21,7 @@ const routes: Routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: './following/following.module#FollowingPageModule'
+                        loadChildren: () => FollowingPageModule
                     }
                 ]
             },
@@ -22,11 +30,15 @@ const routes: Routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: './projects/projects.module#ProjectsPageModule'
+                        loadChildren: () => ProjectsPageModule
                     },
                     {
                         path: 'id',
-                        loadChildren: './projects/project-details/project-details.module#ProjectDetailsPageModule'
+                        loadChildren: () => ProjectDetailsPageModule
+                    },
+                    { 
+                        path: 'new-project', 
+                        loadChildren: () => NewProjectPageModule 
                     }
                 ]
             },
@@ -35,11 +47,15 @@ const routes: Routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: './browse/browse.module#BrowsePageModule'
+                        loadChildren: () => BrowsePageModule
                     },
                     {
                         path: 'id',
-                        loadChildren: './browse/browse-details/browse-details.module#BrowseDetailsPageModule'
+                        loadChildren: () => BrowseDetailsPageModule
+                    },
+                    { 
+                        path: 'new-browse', 
+                        loadChildren: () => NewBrowsePageModule 
                     }
                 ]
             },
@@ -48,7 +64,7 @@ const routes: Routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: './profile/profile.module#ProfilePageModule'
+                        loadChildren: () =>ProfilePageModule
                     }
                 ]
             },
@@ -64,11 +80,6 @@ const routes: Routes = [
         redirectTo: '/home/tabs/following',
         pathMatch: 'full'
     },
-  { path: 'following', loadChildren: './following/following.module#FollowingPageModule' },
-  { path: 'project-details', loadChildren: './projects/project-details/project-details.module#ProjectDetailsPageModule' },
-  { path: 'browse-details', loadChildren: './browse/browse-details/browse-details.module#BrowseDetailsPageModule' }
-
-
 
 ];
 
