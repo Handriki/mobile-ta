@@ -48,8 +48,8 @@
     </ion-row>
     <ion-row>
       <ion-col col size-sm="6" offset-sm="3">
-          <ion-button type="button" color="primary" fill="clear" (click)="onSwitchAuthMode()" expand="full">Switch to {{ isLogin ? 'Signup' : 'Login' }}</ion-button>
-          <ion-button type="submit" color="primary" (click)="onLogin()" [disabled]="!f.valid" expand="block">Login</ion-button>
+          <ion-button type="button" color="primary" fill="clear" (click)="presentSignUpModal()" expand="full">Switch to {{ isLogin ? 'Signup' : 'Login' }}</ion-button>
+          <ion-button type="submit" color="primary" [disabled]="!f.valid" expand="block">Login</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
