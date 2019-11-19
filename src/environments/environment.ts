@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  firebaseAPIKey: "AIzaSyCAfIHjGynLwF0QXxdCevo2qdFKbN4XdhQ"
+  firebaseAPIKey: "AIzaSyCAfIHjGynLwF0QXxdCevo2qdFKbN4XdhQ",
+  firebase: {
+    apiKey: "AIzaSyCAfIHjGynLwF0QXxdCevo2qdFKbN4XdhQ",
+    authDomain: "collab-yuk.firebaseapp.com",
+    databaseURL: "https://collab-yuk.firebaseio.com",
+    projectId: "collab-yuk",
+    storageBucket: "collab-yuk.appspot.com",
+    messagingSenderId: "236622633899",
+    appId: "1:236622633899:web:8ad18799c478080db510ee",
+    measurementId: "G-9CMNRJK1P3"
+  }
 };
 
 /*
