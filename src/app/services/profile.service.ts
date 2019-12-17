@@ -45,4 +45,7 @@ export class ProfileService {
     return this.profilesCollection.doc(id).update(profile);
   }
 
+  addProfile(profile: Profile){
+    return this.profilesCollection.add(profile);
+  }
 }
