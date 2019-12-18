@@ -12,9 +12,9 @@ export class ProjectsPage implements OnInit {
   constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
-    this.projectService.getProjects().subscribe(res =>{
+    this.projectService.getProjects().subscribe(res => {
       this.projects = res;
-    })
+    });
   }
 
   remove(item){

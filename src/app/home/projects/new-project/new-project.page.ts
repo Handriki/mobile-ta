@@ -25,10 +25,18 @@ export class NewProjectPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projectId = this.route.snapshot.params['id'];
-    if(this.projectId){
-      this.loadProject();
-    }
+    
+  }
+
+  onPost(){
+    // this.profile = {
+    //   email: f.value.email,
+    //   nama : '',
+    //   prodi: '',
+    //   rating : 5,
+    //   skills: ''
+    // }
+    this.projectService.addProject(this.project);
   }
 
   async loadProject(){
