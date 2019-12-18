@@ -4,14 +4,12 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <form #f="ngForm" (ngSubmit)="onSignUp(f)">
     <ion-list>
       <ion-item>
         <ion-label position="fixed">Email</ion-label>
         <ion-input
           required
-          ngModel
-          name="email"
+          [(ngModel)]="email"
           type="email"
           placeholder="Your email here"
         ></ion-input>
@@ -20,8 +18,7 @@
         <ion-label position="fixed">Password</ion-label>
         <ion-input
           required
-          ngModel
-          name="pwd"
+          [(ngModel)]="password"
           type="password"
           minlength="6"
           placeholder="******"
@@ -31,15 +28,13 @@
         <ion-label position="fixed">Confirm Password</ion-label>
         <ion-input
           required
-          ngModel
-          name="confirmPwd"
+          [(ngModel)]="cpassword"
           type="password"
           minlength="6"
           placeholder="******"
         ></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button expand="block" [disabled]="!f.valid" type="submit">Sign Up</ion-button>
+    <ion-button expand="block" (click)="onSignUp()">Sign Up</ion-button>
     <ion-button expand="block" fill='outline' color='danger' (click)='onCancel()'>Cancel</ion-button>
-  </form>
 </ion-content>

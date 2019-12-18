@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project, ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-new-project',
@@ -11,7 +12,7 @@ import { LoadingController, NavController } from '@ionic/angular';
 export class NewProjectPage implements OnInit {
 
   project: Project = {
-    title : 'Test 1 2 3',
+    title : 'Test 1 2 34',
     projectDetails: 'Testtttttt'
   };
 
@@ -28,15 +29,14 @@ export class NewProjectPage implements OnInit {
     
   }
 
-  onPost(){
-    // this.profile = {
-    //   email: f.value.email,
-    //   nama : '',
-    //   prodi: '',
-    //   rating : 5,
-    //   skills: ''
-    // }
+  onPost(f : NgForm){
+    this.project = {
+      title: f.value.title,
+      projectDetails : f.value.details,
+    }
+    console.log("masuk");
     this.projectService.addProject(this.project);
+    this.navController.navigateBack('home');
   }
 
   async loadProject(){

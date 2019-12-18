@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content padding>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <ion-grid>
     <ion-row>
       <ion-col size-sm="6" offset-sm="3">
@@ -14,10 +13,8 @@
                 <ion-label position="floating">E-mail</ion-label>
                 <ion-input 
                   inputmode="email"
-                  ngModel
-                  name="email"
+                  [(ngModel)]="email"
                   required
-                  email
                   #emailCtrl="ngModel" 
                   type="email">
                 </ion-input>
@@ -31,8 +28,7 @@
                   <ion-label position="floating">Password</ion-label>
                   <ion-input 
                   type="password"
-                  ngModel
-                  name="password"
+                  [(ngModel)]="password"
                   #passwordCtrl="ngModel"
                   required
                   minLength="6">
@@ -49,10 +45,9 @@
     <ion-row>
       <ion-col col size-sm="6" offset-sm="3">
           <ion-button type="button" color="primary" fill="clear" (click)="presentSignUpModal()" expand="full">Switch to {{ isLogin ? 'Signup' : 'Login' }}</ion-button>
-          <ion-button type="submit" color="primary" [disabled]="!f.valid" expand="block">Login</ion-button>
+          <ion-button type="submit" color="primary" (click)="onLogin()" expand="block">Login</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <!-- <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner> -->
-</form>
 </ion-content>

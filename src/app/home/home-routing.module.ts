@@ -33,7 +33,7 @@ const routes: Routes = [
                         loadChildren: () => ProjectsPageModule
                     },
                     {
-                        path: 'id',
+                        path: ':id',
                         loadChildren: () => ProjectDetailsPageModule
                     },
                     { 
