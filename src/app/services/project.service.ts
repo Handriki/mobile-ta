@@ -18,7 +18,9 @@ export class ProjectService {
 
 
   constructor(db: AngularFirestore) {
-    this.projectsCollection.snapshotChanges().pipe(
+    this.projectsCollection = db.collection<Project>('project');
+
+    this.projects = this.projectsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();

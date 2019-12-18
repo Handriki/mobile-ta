@@ -16,6 +16,14 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  <ng-container *ngIf="!projects || projects.length == 0">
+    <div *ngFor="let n of [0,1,2]" padding>
+      <ion-skeleton-text></ion-skeleton-text>
+      <p>
+        <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+      </p>
+    </div>
+  </ng-container>
   <div *ngFor="let item of projects">
     <ion-card [routerLink]="['/','home','tabs','projects', 'item.id']">
       <ion-card-header>
