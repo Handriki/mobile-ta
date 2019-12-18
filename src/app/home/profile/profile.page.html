@@ -16,7 +16,9 @@
       <ion-col size="9">
         <ion-row>
           <ion-text>
-            <h1>Handriki Kasa</h1>
+            <div>
+              <h1>{{ email }}</h1>
+            </div>
           </ion-text>
         </ion-row>
         <ion-row>
@@ -36,7 +38,7 @@
       </ion-text>
     </ion-row>
   </ion-grid>
-  <ion-card (click)="expandItem(item)" *ngFor="let item of items">
+  <!-- <ion-card (click)="expandItem(item)" *ngFor="let item of items">
     <ion-card-header>
       <ion-card-title>
         Portofolio
@@ -82,5 +84,5 @@
         </ion-grid>
       </app-expandable>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>
