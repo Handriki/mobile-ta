@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 export interface Browse{
   nama: string
   title: string;
-  browseDetails: string;
+  details: string;
 }
 
 @Injectable({
