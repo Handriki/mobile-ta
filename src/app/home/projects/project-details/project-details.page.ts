@@ -9,10 +9,7 @@ import { LoadingController, NavController } from '@ionic/angular';
   styleUrls: ['./project-details.page.scss'],
 })
 export class ProjectDetailsPage implements OnInit {
-  project: Project = {
-    title: 'test 123',
-    projectDetails: ' Testtttt'
-  };
+  project: Project;
 
   projectId = null;
 
