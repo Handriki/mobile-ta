@@ -6,6 +6,10 @@ import { map } from 'rxjs/operators';
 export interface User {
   uid: string;
   email: string;
+  nama: string;
+  prodi: string;
+  semester: number;
+  skills: string;
 }
 
 @Injectable({
@@ -19,17 +23,17 @@ export class UserService {
   private user: User;
 
   constructor(db: AngularFirestore) { 
-    // this.usersCollection = db.collection<User>('users');
-    
-    // this.users = this.usersCollection.snapshotChanges().pipe(
-    //   map(actions => {
-    //     return actions.map(a => {
-    //       const data = a.payload.doc.data();
-    //       const id = a.payload.doc.id;
-    //       return { id, ...data };
-    //     });
-    //   })
-    // );
+    this.usersCollection = db.collection<User>('users');
+
+    this.users = this.usersCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data};
+        });
+      })
+    );
   }
 
   getUsers(){
@@ -51,4 +55,9 @@ export class UserService {
   getUserID(){
     return this.user.uid;
   }
+
+  getUserName(){
+    return this.user.nama;
+  }
+  
 }

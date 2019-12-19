@@ -4,6 +4,7 @@
       <ion-menu-button menu="m1"></ion-menu-button>
     </ion-buttons>
     <ion-title>Collab Yuk!</ion-title>
+    <ion-button color="light" fill="clear" slot="end" (click)="presentEditModal()">Edit</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +18,7 @@
         <ion-row>
           <ion-text>
             <div>
-              <h1>{{ email }}</h1>
+              <h1>{{ nama }}</h1>
             </div>
           </ion-text>
         </ion-row>
@@ -28,12 +29,10 @@
     </ion-row>
     <ion-row>
       <ion-text>
-        <p>Prodi : Informatika</p>
-        <p>Semester : 7</p>
+        <p>Prodi : {{ prodi }}</p>
+        <p>Semester : {{ semester }}</p>
         <p>Skills :<br>
-            - Programming<br>
-            - C++<br>
-            - PHP
+            {{ skills }}
         </p>
       </ion-text>
     </ion-row>

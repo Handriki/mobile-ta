@@ -12,7 +12,7 @@
 
 <ion-content>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary" [routerLink]="['/','home','tabs','projects', 'new-project']">
+    <ion-fab-button color="primary" (click)="onTest()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -25,7 +25,7 @@
     </div>
   </ng-container>
   <div *ngFor="let item of projects">
-    <ion-card [routerLink]="['/','home','tabs','projects', item.id]">
+    <ion-card [routerLink]="['/','home','tabs','projects',item.id]">
       <ion-card-header>
         <ion-card-title>
           {{ item.title }}

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/tabs/Profile"></ion-back-button>
+    </ion-buttons>
+    <ion-button color="light" fill="clear" slot="end" (click)="onEdit()">Change</ion-button>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input required type="text" [(ngModel)]="nama"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prodi</ion-label>
+      <ion-input required type="text" [(ngModel)]="prodi"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Semester</ion-label>
+      <ion-input type="number" [(ngModel)]="semester"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked">Skills</ion-label>
+      <ion-textarea [attr.rows]="10" required [(ngModel)]="skills"></ion-textarea>
+    </ion-item>
+</ion-list>
+</ion-content>

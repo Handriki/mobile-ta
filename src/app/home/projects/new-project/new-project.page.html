@@ -3,22 +3,20 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home/tabs/projects"></ion-back-button>
     </ion-buttons>
-    <ion-button color="light" fill="clear" slot="end" type="submit" [disabled]="!f.form.valid" (click)="f.ngSubmit.emit()">Post</ion-button>
+    <ion-button color="light" fill="clear" slot="end" type="submit" (click)="onPost()">Post</ion-button>
     <ion-title>New Project</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <ion-list>
-  <form #f="ngForm" (ngSubmit)="onPost(f)">
-    <ion-item>
-      <ion-label position="floating">Title</ion-label>
-      <ion-input required ngModel type="text" name="title"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label position="stacked">Project Details</ion-label>
-      <ion-textarea [attr.rows]="27" required ngModel name="details"></ion-textarea>
-    </ion-item>
-  </form>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input required [(ngModel)]="title" type="text"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked">Project Details</ion-label>
+    <ion-textarea [attr.rows]="27" required [(ngModel)]="details"></ion-textarea>
+  </ion-item>
 </ion-list>
 </ion-content>

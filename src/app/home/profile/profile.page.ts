@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../../services/user.service';
+import { ModalController } from '@ionic/angular';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile',
@@ -16,16 +18,24 @@ export class ProfilePage implements OnInit {
 	userPosts;
 	sub;
 	// posts;
-	email: string;
+  email: string;
+  nama: string;
+  prodi: string;
+  semester: number;
+  skills: string;
 	// profilePic: string;
 
-  constructor(private afs: AngularFirestore, private user: UserService) {
+  constructor(private afs: AngularFirestore, private user: UserService, private modalCtrl: ModalController) {
     this.mainuser = afs.doc(`users/${user.getUserID()}`);
 		this.sub = this.mainuser.valueChanges().subscribe(event => {
 			// this.posts = event.posts;
-			this.email = event.email;
+      this.email = event.email;
+      this.nama = event.nama;
+      this.prodi = event.prodi;
+      this.semester = event.semester;
+      this.skills = event.skills;
 			// this.profilePic = event.profilePic;
-		})
+		});
     // this.items = [
     //   { expanded: false }
     // ];
@@ -48,6 +58,13 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  async presentEditModal() {
+    const modal = await this.modalCtrl.create({
+      component: EditProfileComponent
+    });
+    return await modal.present();
   }
 
 }
