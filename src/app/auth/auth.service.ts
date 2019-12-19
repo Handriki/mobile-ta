@@ -18,7 +18,6 @@ interface AuthResponseData {
 export class AuthService {
   private _userIsAuthenticated = true;
   private _userID : string;
-  private res : AuthResponseData;
 
   get userIsAuthenticated() {
     return this._userIsAuthenticated;
