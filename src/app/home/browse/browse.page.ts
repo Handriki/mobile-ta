@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Browse, BrowseService } from 'src/app/services/browse.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-browse',
@@ -7,12 +9,22 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./browse.page.scss'],
 })
 export class BrowsePage implements OnInit {
+  browses: Browse[];
 
-  constructor(public navCtrl : NavController) { 
+  constructor(public navCtrl : NavController,
+    private browseService: BrowseService,
+    private router: Router) { 
     // this.generateProjects();
   }
 
   ngOnInit() {
+    this.browseService.getBrowses().subscribe(res => {
+      this.browses = res;
+    });
+  }
+
+  onTest(){
+    this.router.navigateByUrl('/home/tabs/browse/new-browse');
   }
 
   projects : string[];
@@ -36,5 +48,8 @@ export class BrowsePage implements OnInit {
     }
   }
 
-
+  
+  details(id){
+    this.router.navigateByUrl('/home/tabs/browse/' + id);
+  }
 }

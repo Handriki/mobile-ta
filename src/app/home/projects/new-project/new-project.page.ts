@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project, ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController, NavController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms'
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../../../services/user.service';
@@ -14,7 +14,6 @@ import { UserService } from '../../../services/user.service';
 export class NewProjectPage implements OnInit {
 
   project: Project;
-
   projectId = null
   mainuser: AngularFirestoreDocument;
   title: string;
@@ -27,7 +26,8 @@ export class NewProjectPage implements OnInit {
     private route: ActivatedRoute,
     private loadingController: LoadingController,
     private navController: NavController,
-    private user: UserService
+    private user: UserService,
+    private alertController: AlertController
   ) { 
 
   }
@@ -44,9 +44,9 @@ export class NewProjectPage implements OnInit {
         details : details,
         nama: this.user.getUserName()
       })
+      this.presentAlert('Success', 'Post berhasil!')
+      this.navController.navigateBack('home/tabs/projects');
 
-      // this.presentAlert('Success', 'Post berhasil!')
-      // this.modalCtrl.dismiss();
 
     }
     catch(error){
@@ -54,6 +54,15 @@ export class NewProjectPage implements OnInit {
     }
   }
 
+  async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
   async loadProject(){
     const loading = await this.loadingController.create({
       message: 'Loading Project...'
