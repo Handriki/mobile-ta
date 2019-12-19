@@ -33,13 +33,13 @@ const routes: Routes = [
                         loadChildren: () => ProjectsPageModule
                     },
                     {
+                        path: 'new-project',
+                        loadChildren: () => NewProjectPageModule
+                    },
+                    {
                         path: ':id',
                         loadChildren: () => ProjectDetailsPageModule
                     },
-                    { 
-                        path: 'new-project', 
-                        loadChildren: () => NewProjectPageModule 
-                    }
                 ]
             },
             {
@@ -50,7 +50,7 @@ const routes: Routes = [
                         loadChildren: () => BrowsePageModule
                     },
                     {
-                        path: 'id',
+                        path: ':id',
                         loadChildren: () => BrowseDetailsPageModule
                     },
                     { 

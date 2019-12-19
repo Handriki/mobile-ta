@@ -3,6 +3,8 @@ import { Project, ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms'
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-new-project',
@@ -11,32 +13,45 @@ import { NgForm } from '@angular/forms'
 })
 export class NewProjectPage implements OnInit {
 
-  project: Project = {
-    title : 'Test 1 2 34',
-    projectDetails: 'Testtttttt'
-  };
+  project: Project;
 
   projectId = null
+  mainuser: AngularFirestoreDocument;
+  title: string;
+  details: string;
+  nama: string;
 
   constructor(
+    private afs: AngularFirestore,
     private projectService: ProjectService,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
-    private navController: NavController
-  ) { }
+    private navController: NavController,
+    private user: UserService
+  ) { 
+
+  }
 
   ngOnInit() {
     
   }
 
-  onPost(f : NgForm){
-    this.project = {
-      title: f.value.title,
-      projectDetails : f.value.details,
+  async onPost(){
+    const { title, details } = this;
+    try{
+      this.afs.doc(`project/${this.user.getUserID()}`).set({
+        title : title,
+        details : details,
+        nama: this.user.getUserName()
+      })
+
+      // this.presentAlert('Success', 'Post berhasil!')
+      // this.modalCtrl.dismiss();
+
     }
-    console.log("masuk");
-    this.projectService.addProject(this.project);
-    this.navController.navigateBack('home');
+    catch(error){
+      console.dir(error);
+    }
   }
 
   async loadProject(){

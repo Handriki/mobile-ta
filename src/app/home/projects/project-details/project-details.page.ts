@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project,ProjectService} from 'src/app/services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-details',
@@ -10,8 +11,9 @@ import { LoadingController, NavController } from '@ionic/angular';
 })
 export class ProjectDetailsPage implements OnInit {
   project: Project = {
-    title: 'test 123',
-    projectDetails: ' Testtttt'
+    title: "title",
+    nama: "nama",
+    details: "details"
   };
 
   projectId = null;
@@ -20,10 +22,12 @@ export class ProjectDetailsPage implements OnInit {
     private projectService: ProjectService,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
-    private navController: NavController) { }
+    private navController: NavController,
+    private router: Router) { }
 
   ngOnInit() {
     this.projectId = this.route.snapshot.params['id'];
+    this.router.navigateByUrl('/home/tabs/projects/' + this.projectId);
     if(this.projectId){
       this.loadProject();
     }
@@ -38,10 +42,9 @@ export class ProjectDetailsPage implements OnInit {
       message: 'Loading Project...'
     });
     await loading.present();
-
     this.projectService.getProject(this.projectId).subscribe(res =>{
-      loading.dismiss();
       this.project = res;
+      loading.dismiss();
     });
   }
 

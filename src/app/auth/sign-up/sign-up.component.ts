@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
 import { ProfileService, Profile } from '../../services/profile.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { UserService } from '../../services/user.service';
+import { UserService, User } from '../../services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,6 +16,9 @@ import { UserService } from '../../services/user.service';
 export class SignUpComponent implements OnInit {
   profile: Profile;
   email: string = "";
+  nama: string = "";
+  prodi: string = "";
+  skills: string = "";
   password: string = "";
   cpassword: string = "";
 
@@ -25,7 +28,9 @@ export class SignUpComponent implements OnInit {
     public afAuth: AngularFireAuth,
     public afstore: AngularFirestore,
     public user: UserService,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private loadingController: LoadingController) { }
+    users: User;
 
   ngOnInit() {}
 
@@ -50,11 +55,23 @@ export class SignUpComponent implements OnInit {
       this.afstore.doc(`users/${res.user.uid}`).set({
         email
       })
+      const loading = await this.loadingController.create({
+        message: 'Registering User...'
+      });
+      await loading.present();
+      this.user.getUser(res.user.uid).subscribe(r => {
+        this.users = r;
+        this.user.setUser({
+          email,
+          uid: res.user.uid,
+          nama: this.users.nama,
+          prodi: this.users.prodi,
+          semester: this.users.semester,
+          skills: this.users.skills
+        });
+        loading.dismiss();
+      });
 
-      this.user.setUser({
-        email,
-        uid: res.user.uid,
-      })
 
       this.presentAlert('Success', 'You are registered!')
       this.modalCtrl.dismiss();

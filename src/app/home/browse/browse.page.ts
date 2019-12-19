@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 export class BrowsePage implements OnInit {
 
   constructor(public navCtrl : NavController) { 
-    this.generateProjects();
+    // this.generateProjects();
   }
 
   ngOnInit() {
@@ -17,17 +17,17 @@ export class BrowsePage implements OnInit {
 
   projects : string[];
 
-  generateProjects(){
-    this.projects = [
-      'test',
-      'mantap',
-      'ms',
-      'asdf'
-    ];
-  }
+  // generateProjects(){
+  //   this.projects = [
+  //     'test',
+  //     'mantap',
+  //     'ms',
+  //     'asdf'
+  //   ];
+  // }
 
   getProjects(ev: any){
-    this.generateProjects();
+    // this.generateProjects();
     let serVal = ev.target.value;
     if(serVal && serVal.trim() != ''){
       this.projects = this.projects.filter((project) => {

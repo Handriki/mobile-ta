@@ -8,14 +8,15 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- <div *ngFor="let item of project"> -->
   <h1>{{ project.title }}</h1>
-  <h3>by Dosen Informatika</h3>
-  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+  <h3>by {{ project.nama }}</h3>
   <p>
-    {{ project.projectDetails }}
+    {{ project.details }}
   </p>
   <div text-right>
-      <ion-button color="primary" margin>Ask Question</ion-button>
+      <!-- <ion-button color="primary" margin>Ask Question</ion-button> -->
   </div>
+  <!-- </div> -->
 </ion-content>
   
