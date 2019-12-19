@@ -15,7 +15,7 @@ export class ProjectsPage implements OnInit {
   ngOnInit() {
     this.projectService.getProjects().subscribe(res => {
       this.projects = res;
-      console.log("selesai load");
+      // console.log("selesai load");
     });
   }
 
@@ -27,4 +27,7 @@ export class ProjectsPage implements OnInit {
     this.projectService.removeProject(item.id);
   }
 
+  details(id){
+    this.router.navigateByUrl('/home/tabs/projects/' + id);
+  }
 }

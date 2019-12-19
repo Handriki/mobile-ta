@@ -10,24 +10,29 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list> 
-    <ion-item *ngFor ="let project of projects">
-        {{ project }}
-    </ion-item>
-  </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary" [routerLink]="['/','home','tabs','browse', 'new-browse']">
+    <ion-fab-button color="primary" (click)="onTest()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-card [routerLink]="['/','home','tabs','browse', 'id']">
-    <!-- <ion-card-header>
-      <ion-card-title>
-        Mencari Project Front End
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Sedang mencari project yang membutuhkan front end
-    </ion-card-content> -->
-  </ion-card>
+  <ng-container *ngIf="!projects || projects.length == 0">
+    <div *ngFor="let n of [0,1,2]" padding>
+      <ion-skeleton-text></ion-skeleton-text>
+      <p>
+        <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+      </p>
+    </div>
+  </ng-container>
+  <div *ngFor="let item of projects">
+    <ion-card (click)="details(item.id)">
+      <ion-card-header>
+        <ion-card-title>
+          {{ item.title }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ item.details }}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

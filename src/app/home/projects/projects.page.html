@@ -25,14 +25,14 @@
     </div>
   </ng-container>
   <div *ngFor="let item of projects">
-    <ion-card [routerLink]="['/','home','tabs','projects',item.id]">
+    <ion-card (click)="details(item.id)">
       <ion-card-header>
         <ion-card-title>
           {{ item.title }}
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        {{ item.projectDetails }}
+        {{ item.details }}
       </ion-card-content>
     </ion-card>
   </div>

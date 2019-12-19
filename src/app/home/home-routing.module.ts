@@ -39,7 +39,7 @@ const routes: Routes = [
                     {
                         path: ':id',
                         loadChildren: () => ProjectDetailsPageModule
-                    }
+                    },
                 ]
             },
             {
@@ -50,7 +50,7 @@ const routes: Routes = [
                         loadChildren: () => BrowsePageModule
                     },
                     {
-                        path: 'id',
+                        path: ':id',
                         loadChildren: () => BrowseDetailsPageModule
                     },
                     { 

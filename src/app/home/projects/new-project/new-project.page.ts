@@ -39,7 +39,7 @@ export class NewProjectPage implements OnInit {
   async onPost(){
     const { title, details } = this;
     try{
-      this.afs.doc(`projects/${this.user.getUserID()}`).set({
+      this.afs.doc(`project/${this.user.getUserID()}`).set({
         title : title,
         details : details,
         nama: this.user.getUserName()

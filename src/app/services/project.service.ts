@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Project{
-  user: string
+  nama: string
   title: string;
   projectDetails: string;
 }
