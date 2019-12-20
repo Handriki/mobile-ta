@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../../services/user.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { File } from '@ionic-native/file/ngx';
+import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +28,8 @@ export class ProfilePage implements OnInit {
   skills: string;
 	// profilePic: string;
 
-  constructor(private afs: AngularFirestore, private user: UserService, private modalCtrl: ModalController) {
+  constructor(private afs: AngularFirestore, private user: UserService, private modalCtrl: ModalController,
+    public navCtrl: NavController, private fileChooser: FileChooser, private file: File) {
     this.mainuser = afs.doc(`users/${user.getUserID()}`);
 		this.sub = this.mainuser.valueChanges().subscribe(event => {
 			// this.posts = event.posts;
@@ -39,6 +43,36 @@ export class ProfilePage implements OnInit {
     // this.items = [
     //   { expanded: false }
     // ];
+  }
+
+  choose(){
+    this.fileChooser.open().then((uri)=>{
+      alert(uri);
+
+      this.file.resolveLocalFilesystemUrl(uri).then((newUrl)=>{
+        alert(JSON.stringify(newUrl));
+
+        let dirPath = newUrl.nativeURL;
+        let dirPathSegments = dirPath.split('/')
+        dirPathSegments.pop()
+        dirPath = dirPathSegments.join('/')
+
+        this.file.readAsArrayBuffer(dirPath, newUrl.name).then(async(buffer)=>{
+          await this.upload(buffer, newUrl.name);
+        })
+      })
+    })
+  }
+  async upload(buffer, name){
+    let blob = new Blob([buffer], {type: "image/jpeg"});
+    
+    let storage = firebase.storage();
+
+    storage.ref('images/' + name).put(blob).then((d)=>{
+      alert("done");
+    }).catch((error)=>{
+      alert(JSON.stringify(error));
+        })
   }
 
   // expandItem(item): void {

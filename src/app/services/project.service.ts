@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 export interface Project{
   nama: string
   title: string;
-  projectDetails: string;
+  details: string;
 }
 
 @Injectable({

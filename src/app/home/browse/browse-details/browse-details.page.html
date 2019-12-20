@@ -8,14 +8,14 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Mencari Project Front End</h1>
-  <h3>by Aldric Leonardo</h3>
-  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+  <h1> {{browse.title}}</h1>
+  <h3>by {{browse.nama}}</h3>
+  
   <p>
-    Sedang mencari project yang membutuhkan front end programmer
+    {{browse.details}}
   </p>
   <div text-right>
-    <ion-button color="primary" margin [routerLink]="['/','user-profile']">See Profile</ion-button>
+    <!-- <ion-button color="primary" margin [routerLink]="['/','user-profile']">See Profile</ion-button> -->
   </div>
 </ion-content>
   

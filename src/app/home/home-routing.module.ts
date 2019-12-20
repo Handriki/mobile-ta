@@ -49,14 +49,14 @@ const routes: Routes = [
                         path: '',
                         loadChildren: () => BrowsePageModule
                     },
+                    { 
+                        path: 'new-browse', 
+                        loadChildren: () => NewBrowsePageModule 
+                    },
                     {
                         path: ':id',
                         loadChildren: () => BrowseDetailsPageModule
                     },
-                    { 
-                        path: 'new-browse', 
-                        loadChildren: () => NewBrowsePageModule 
-                    }
                 ]
             },
             {
